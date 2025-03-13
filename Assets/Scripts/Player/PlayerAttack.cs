@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public GameObject spear;
+    public PlayerMove playerMove;
 
     [SerializeField]int maxAttackCount = 1;
     public int attackCount;
@@ -28,6 +29,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (isGameOver) return;
             Attack();
+
         }
     }
 
@@ -75,10 +77,11 @@ public class PlayerAttack : MonoBehaviour
         Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 direction = new Vector3(clickPosition.x, clickPosition.y, 0) - transform.position;
 
+        spear.transform.up = (direction).normalized;
         spear.transform.position = transform.position + direction.normalized;
-        spear.transform.up = (new Vector3(clickPosition.x, clickPosition.y,0) - transform.position).normalized;
+        playerMove.AttackPush(direction);
         yield return new WaitForSeconds(0.2f);
-        spear.transform.position = Vector3.zero;
+        spear.transform.localPosition = Vector3.zero;
         spear.SetActive(false);
         isAttack = false;
     }

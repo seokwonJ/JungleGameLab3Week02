@@ -12,14 +12,16 @@ public class PlayerMove : MonoBehaviour
     public float dashDuration = 0.2f; // 대쉬 지속 시간
     public float dashCooldown = 1f; // 대쉬 쿨다운
     public float drag = 5f; // 물리적 마찰 (관성 감소)
+    public float attackPushForce = 3f; // 공격 시 앞으로 밀려나는 힘
 
     public PlayerHealth playerHp;
+    public GameObject body;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private bool isDashing = false;
     private float lastDashTime = -10f;
-
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -72,7 +74,13 @@ public class PlayerMove : MonoBehaviour
         if (rb.linearVelocity.magnitude > 0.1f) // 움직일 때만 회전
         {
             float angle = Mathf.Atan2(rb.linearVelocity.y, rb.linearVelocity.x) * Mathf.Rad2Deg;
-            rb.rotation = angle - 90f; // 스프라이트가 위를 향하도록 조정
+            //rb.rotation = angle - 90f; // 스프라이트가 위를 향하도록 조정
+
+            // body 오브젝트 회전 적용
+            if (body != null)
+            {
+                body.transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
+            }
         }
     }
 
@@ -86,5 +94,15 @@ public class PlayerMove : MonoBehaviour
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         playerHp.SetNotInvincibility();
+    }
+
+    public void  AttackPush(Vector3 direction)
+    {
+        StopAllCoroutines();
+        isDashing = false;
+        playerHp.SetNotInvincibility();
+        Vector2 pushDirection = direction; // 현재 바라보는 방향
+        rb.linearVelocity = Vector3.zero;
+        rb.linearVelocity += pushDirection * attackPushForce;
     }
 }
