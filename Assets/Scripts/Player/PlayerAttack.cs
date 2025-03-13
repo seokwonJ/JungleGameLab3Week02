@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro.Examples;
@@ -5,12 +6,15 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public GameObject bullet;
+    public GameObject spear;
+
     [SerializeField]int maxAttackCount = 1;
     public int attackCount;
     public bool isGameOver;
 
     public CameraController cameraController;
+
+    private bool isAttack;
     void Start() 
     {
         cameraController = Camera.main.GetComponent<CameraController>();
@@ -46,6 +50,10 @@ public class PlayerAttack : MonoBehaviour
         //bulletObj.GetComponent<Spear>().targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         //if (cameraController != null) cameraController.StartShake(0.2f, 0.02f);
+        if (!isAttack)
+        {
+            StartCoroutine(AttackSphere());
+        }
     }
 
     public void AttackCountUp()
@@ -60,13 +68,18 @@ public class PlayerAttack : MonoBehaviour
             attackCount -= 1;
         }
     }
-
-    void OnTriggerEnter2D(Collider2D other)
+    IEnumerator AttackSphere()
     {
-        if (other.CompareTag("Item"))
-        {
-            AttackCountUp();
-            Destroy(other.gameObject);
-        }
+        isAttack = true;
+        spear.SetActive(true);
+        Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 direction = new Vector3(clickPosition.x, clickPosition.y, 0) - transform.position;
+
+        spear.transform.position = transform.position + direction.normalized;
+        spear.transform.up = (new Vector3(clickPosition.x, clickPosition.y,0) - transform.position).normalized;
+        yield return new WaitForSeconds(0.2f);
+        spear.transform.position = Vector3.zero;
+        spear.SetActive(false);
+        isAttack = false;
     }
 }
