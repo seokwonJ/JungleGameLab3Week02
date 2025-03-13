@@ -545,7 +545,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3658460418154360792, guid: dbecbf49e0f27ee44a63f824ffcae74a, type: 3}
       propertyPath: maxSpeed
-      value: 8
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3658460418154360792, guid: dbecbf49e0f27ee44a63f824ffcae74a, type: 3}
+      propertyPath: dashSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3658460418154360792, guid: dbecbf49e0f27ee44a63f824ffcae74a, type: 3}
+      propertyPath: dashDuration
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3658460418154360792, guid: dbecbf49e0f27ee44a63f824ffcae74a, type: 3}
       propertyPath: deceleration
@@ -553,7 +561,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3658460418154360792, guid: dbecbf49e0f27ee44a63f824ffcae74a, type: 3}
       propertyPath: attackPushForce
-      value: 10
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494529557254148686, guid: dbecbf49e0f27ee44a63f824ffcae74a, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494529557254148686, guid: dbecbf49e0f27ee44a63f824ffcae74a, type: 3}
+      propertyPath: m_AngularDamping
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8248272911471217327, guid: dbecbf49e0f27ee44a63f824ffcae74a, type: 3}
       propertyPath: m_LocalPosition.x

@@ -90,6 +90,7 @@ public class PlayerMove : MonoBehaviour
         playerHp.SetInvincibility();
         lastDashTime = Time.time;
         Vector2 dashDirection = moveInput.normalized;
+        body.transform.up = dashDirection;
         rb.linearVelocity = dashDirection * dashSpeed;
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;

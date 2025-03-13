@@ -1023,7 +1023,7 @@ MonoBehaviour:
   secondMoveDistance: 1
   bloodParticle: {fileID: 5095475880817196780}
   teeth: {fileID: 2254162210481745511}
-  attackDistance: 2.5
+  attackDistance: 4
 --- !u!256 &744148997120422602
 FrictionJoint2D:
   m_ObjectHideFlags: 0
