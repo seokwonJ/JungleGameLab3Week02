@@ -198,10 +198,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 850040efd8600d14f92e3bba0cd95fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 5
-  speed: 0
-  acceleration: 3
-  turnSpeed: 100
+  maxSpeed: 10
+  acceleration: 50
+  deceleration: 20
+  dashSpeed: 30
+  dashDuration: 0.2
+  dashCooldown: 0.3
+  drag: 1
+  playerHp: {fileID: 0}
 --- !u!50 &5494529557254148686
 Rigidbody2D:
   serializedVersion: 5
@@ -307,8 +311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d975b9f8594a6ca469ffaf3908cfafee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBarFill: {fileID: 0}
-  maxHealth: 50
   cameraController: {fileID: 0}
 --- !u!1 &1692651946758071335
 GameObject:

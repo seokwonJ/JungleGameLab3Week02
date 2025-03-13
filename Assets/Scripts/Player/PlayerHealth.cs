@@ -6,26 +6,20 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public Image healthBarFill;
-
-    public float maxHealth = 50; // 최대 체력
-    float currentHealth;
-
     public CameraController cameraController;
 
-    private Vector3 originalPosition;
+    private bool invincibility;
+
 
     void Start()
     {
-        if (SceneManager.GetActiveScene().name == "IntegrateScene") healthBarFill = UIManager.Instance.gameObject.transform.GetChild(1).GetChild(1).GetComponent<Image>();
-        maxHealth = StateManager.Instance.maxHP;
-        print(maxHealth);
         cameraController = Camera.main.GetComponent<CameraController>();
-        currentHealth = maxHealth; // 시작할 때 최대 체력 설정
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (invincibility) return;  // 무적
+
         if (other.CompareTag("Boss")) // 보스와 충돌하면
         {
             TakeDamage(10); // 데미지 받기 (10)
@@ -46,15 +40,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        cameraController.StartShake(0.3f, 0.2f);
 
-        healthBarFill.fillAmount = currentHealth / maxHealth;
-
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
     }
 
     void Die()
@@ -63,9 +49,13 @@ public class PlayerHealth : MonoBehaviour
         Destroy(gameObject); // 플레이어 삭제
     }
 
-    public void UpdateCurrentHP(int value)
+    public void SetInvincibility()
     {
-        currentHealth = value;
-        healthBarFill.fillAmount = currentHealth / maxHealth;
+        invincibility = true;
     }
+    public void SetNotInvincibility()
+    {
+        invincibility = false;
+    }
+
 }
