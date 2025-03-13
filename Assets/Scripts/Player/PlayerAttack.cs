@@ -80,9 +80,14 @@ public class PlayerAttack : MonoBehaviour
         spear.transform.up = (direction).normalized;
         spear.transform.position = transform.position + direction.normalized;
         playerMove.AttackPush(direction);
+
         yield return new WaitForSeconds(0.2f);
+
         spear.transform.localPosition = Vector3.zero;
         spear.SetActive(false);
+
+        yield return new WaitForSeconds(0.2f);
+
         isAttack = false;
     }
 }

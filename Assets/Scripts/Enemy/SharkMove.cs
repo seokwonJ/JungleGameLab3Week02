@@ -9,7 +9,7 @@ public class SharkMove : MonoBehaviour
     public float collisionMoveDistance = 3f; // 충돌 후 이동 거리
     public float secondMoveDistance = 1f; // 두 번째 이동 거리
     private bool isReversing = false;
-
+    private bool isDead = false;
     public ParticleSystem bloodParticle;
 
     void Start()
@@ -20,17 +20,14 @@ public class SharkMove : MonoBehaviour
 
             if (playerObj != null)
             {
-                Transform whaleTransform = playerObj.transform.GetChild(5);
-                if (whaleTransform != null)
-                {
-                    target = whaleTransform;
-                }
+                target = playerObj.transform;
             }
         }
     }
 
     void Update()
     {
+        if (isDead) return;
         if (!isReversing && target != null)
         {
             // 플레이어 방향으로 이동
@@ -43,12 +40,24 @@ public class SharkMove : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    //void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.collider.CompareTag("Obstacle"))
+    //    {
+    //        // 충돌 시 270도 회전 후 전진하고, 90도 회전 후 전진
+    //        StartCoroutine(ReverseAndMove());
+    //    }
+    //}
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.CompareTag("Obstacle"))
+        if (collision.CompareTag("Spear"))
         {
             // 충돌 시 270도 회전 후 전진하고, 90도 회전 후 전진
-            StartCoroutine(ReverseAndMove());
+            print("Dead");
+            isDead = true;
+            Camera.main.GetComponent<CameraController>().StartShake(0.4f, 0.4f);
+            TimeManager.Instance.HitStop(0.2f);
         }
     }
 

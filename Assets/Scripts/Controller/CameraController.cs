@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
 
             Camera.main.transform.position = originalPosition + new Vector3(offsetX, offsetY, 0);
 
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
         Camera.main.transform.position = originalPosition; // 원래 위치로 복귀
