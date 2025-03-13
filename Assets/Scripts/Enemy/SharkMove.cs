@@ -1,5 +1,9 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Rendering;
+using JetBrains.Annotations;
+using UnityEditor.Tilemaps;
+using Unity.VisualScripting;
 
 public class SharkMove : MonoBehaviour
 {
@@ -10,8 +14,10 @@ public class SharkMove : MonoBehaviour
     public float secondMoveDistance = 1f; // 두 번째 이동 거리
     private bool isReversing = false;
     private bool isDead = false;
+    private bool isAttack = false;
     public ParticleSystem bloodParticle;
-
+    public GameObject teeth;
+    public float attackDistance;
     void Start()
     {
         if (target == null)
@@ -37,6 +43,11 @@ public class SharkMove : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, angle); // 부드러운 회전 적용
 
             transform.position += transform.right * speed * Time.deltaTime; // 현재 방향 기준 이동
+            if (Vector2.Distance(transform.position, target.position) < attackDistance && !isAttack)
+            {
+                isAttack = true;
+                SharkAttack();
+            } 
         }
     }
 
@@ -51,14 +62,39 @@ public class SharkMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isDead) return;
         if (collision.CompareTag("Spear"))
         {
             // 충돌 시 270도 회전 후 전진하고, 90도 회전 후 전진
             print("Dead");
             isDead = true;
-            Camera.main.GetComponent<CameraController>().StartShake(0.4f, 0.4f);
-            TimeManager.Instance.HitStop(0.2f);
+            TimeManager.Instance.HitStop(0.4f);
         }
+    }
+
+    private void SharkAttack()
+    {
+        StartCoroutine(Attack());
+    }
+    
+    IEnumerator Attack()
+    {
+        teeth.SetActive(true);
+        GameObject attackTeeth = teeth.transform.GetChild(1).gameObject;
+        yield return new WaitForSeconds(0.1f);
+
+        attackTeeth.SetActive(true);
+
+        while (true)
+        {
+            
+            attackTeeth.transform.localScale = Vector3.Lerp(attackTeeth.transform.localScale, Vector3.one, Time.deltaTime * 10f);
+            if (Vector3.Distance(attackTeeth.transform.localScale, Vector3.one) < 0.1f || isDead) break;
+            yield return null;
+        }
+        attackTeeth.transform.localScale = Vector3.zero;
+        isAttack = false;
+        teeth.SetActive(false);
     }
 
     private IEnumerator ReverseAndMove()

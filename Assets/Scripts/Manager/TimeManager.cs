@@ -11,6 +11,8 @@ public class TimeManager : MonoBehaviour
     private bool isbulletTime;
     private bool waiting;
 
+    private int hitNum = 0;
+
     void Awake()
     {
         if (_instance == null)
@@ -26,6 +28,7 @@ public class TimeManager : MonoBehaviour
     {
         playTime += Time.unscaledDeltaTime;
         BulletTime();
+        if (hitNum > 0 && !waiting) WaitingHitStop(0.4f);
     }
 
 
@@ -66,18 +69,30 @@ public class TimeManager : MonoBehaviour
 
     public void HitStop(float duration)
     {
+        hitNum += 1;
+        //if (waiting)
+        //    return;
+        //waiting = true;
+        //Time.timeScale = 0.0f;
+        //StartCoroutine(Wait(duration));
+    }
+
+    void WaitingHitStop(float duration)
+    {
         if (waiting)
             return;
+        waiting = true;
         Time.timeScale = 0.0f;
         StartCoroutine(Wait(duration));
     }
 
     IEnumerator Wait(float duration)
     {
-        waiting = true;
+        print("1");
+        Camera.main.GetComponent<CameraController>().StartShake(0.4f, 0.4f);
         yield return new WaitForSecondsRealtime(duration);
         Time.timeScale = isbulletTime ? 0.1f : 1.0f;
-
+        hitNum -= 1;
         waiting = false;
     }
 }

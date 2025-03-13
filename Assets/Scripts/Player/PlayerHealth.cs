@@ -20,10 +20,10 @@ public class PlayerHealth : MonoBehaviour
     {
         if (invincibility) return;  // 무적
 
-        //if (other.CompareTag("Boss")) // 보스와 충돌하면
-        //{
-        //    TakeDamage(10); // 데미지 받기 (10)
-        //}
+        if (other.CompareTag("Dead")) // 보스와 충돌하면
+        {
+            TakeDamage(); // 데미지 받기 (10)
+        }
         //if (other.CompareTag("Enemy2")) // 새와 충돌하면
         //{
         //    TakeDamage(10); // 데미지 받기 (10)
@@ -38,9 +38,9 @@ public class PlayerHealth : MonoBehaviour
         //}
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage()
     {
-
+        print("Player Die");
     }
 
     void Die()

@@ -8,6 +8,8 @@ TagManager:
   - Boss
   - Spear
   - Enemy
+  - Dead
+  - Enemy2
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 
