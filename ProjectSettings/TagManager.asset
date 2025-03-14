@@ -13,6 +13,7 @@ TagManager:
   - BossCanon
   - Item
   - Invincibility
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX

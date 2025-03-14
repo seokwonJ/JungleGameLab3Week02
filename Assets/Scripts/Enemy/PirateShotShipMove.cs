@@ -86,5 +86,12 @@ public class PirateShotShipMove : MonoBehaviour
             print("pirate die");
             TimeManager.Instance.HitStop(0.4f);
         }
+        if (other.CompareTag("PlayerBullet"))
+        {
+            print("Dead");
+            isDead = true;
+            TimeManager.Instance.HitStop(0.4f);
+            Destroy(other.gameObject);
+        }
     }
 }

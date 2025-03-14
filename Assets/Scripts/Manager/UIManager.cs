@@ -50,7 +50,7 @@ public class UIManager : MonoBehaviour
 
         // 재시작 버튼
         RestartBtn = overUI.transform.GetChild(1).GetComponent<Button>();
-        RestartBtn.onClick.AddListener(() => GameManager.Instance.GoShopScene());
+        //RestartBtn.onClick.AddListener(() => GameManager.Instance.GoShopScene());
         gameTime = transform.GetChild(4).GetComponent<Text>();
 
         bossUI = transform.GetChild(5).gameObject;

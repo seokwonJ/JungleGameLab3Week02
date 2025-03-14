@@ -28,7 +28,7 @@ public class TimeManager : MonoBehaviour
     {
         playTime += Time.unscaledDeltaTime;
         BulletTime();
-        if (hitNum > 0 && !waiting) WaitingHitStop(0.4f);
+        if (hitNum > 0 && !waiting) WaitingHitStop(0.2f);
     }
 
 

@@ -16,16 +16,22 @@ public class PirateBullet : MonoBehaviour
         transform.position += dir * speed * Time.deltaTime;
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.tag == "Spear")
+        if (other.tag == "Spear")
         {
             dir *= -1;
-            gameObject.tag = "Spear";
+            gameObject.tag = "PlayerBullet";
         }
-        if (collision.tag == "Player")
+        if (other.tag == "Player")
         {
             print("Player die");
+            GameManager.Instance.GameOver();
+            Destroy(gameObject);
+        }
+        if (other.tag == "Obstacle")
+        {
+            Destroy(gameObject);
         }
     }
 }

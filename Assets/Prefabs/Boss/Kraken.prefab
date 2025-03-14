@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4554757582059816369}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 5778016783270146612}
   m_Layer: 8
   m_Name: Joint6
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 5435816359852900237}
   m_Layer: 8
   m_Name: Joint6
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 3555270592998047616}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -649,7 +649,7 @@ GameObject:
   - component: {fileID: 8114331487794829714}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 8326851128059815111}
   m_Layer: 8
   m_Name: Joint3
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -968,7 +968,7 @@ GameObject:
   - component: {fileID: 6427180640348437873}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1040,7 +1040,7 @@ GameObject:
   - component: {fileID: 1145140806880158340}
   m_Layer: 8
   m_Name: Joint2
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1254,7 +1254,7 @@ GameObject:
   - component: {fileID: 8488798213666219233}
   m_Layer: 8
   m_Name: Joint1
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1468,7 +1468,7 @@ GameObject:
   - component: {fileID: 2614976837172257316}
   m_Layer: 8
   m_Name: Joint6
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1666,6 +1666,93 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0000026226044, y: -0.0000038146973}
   m_Size: {x: 1.0000002, y: 1.0000002}
   m_Direction: 0
+--- !u!1 &1555324838473501107
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8882553041381449649}
+  - component: {fileID: 6037688029521540381}
+  m_Layer: 8
+  m_Name: Square
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8882553041381449649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555324838473501107}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.012200002, z: 0}
+  m_LocalScale: {x: 0.36268538, y: 0.0083329985, z: 0.90909094}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8970230673823770951}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &6037688029521540381
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555324838473501107}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1563118540121795439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,7 +1769,7 @@ GameObject:
   - component: {fileID: 648020712673500141}
   m_Layer: 8
   m_Name: Joint3
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1892,7 +1979,7 @@ GameObject:
   - component: {fileID: 2445861603310799186}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1960,7 +2047,7 @@ GameObject:
   - component: {fileID: 6291130939660165828}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2032,7 +2119,7 @@ GameObject:
   - component: {fileID: 4171603646501955056}
   m_Layer: 8
   m_Name: Joint1
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2246,7 +2333,7 @@ GameObject:
   - component: {fileID: 3466873103859235148}
   m_Layer: 8
   m_Name: Joint1
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2456,7 +2543,7 @@ GameObject:
   - component: {fileID: 5138135574088597024}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2565,7 +2652,7 @@ GameObject:
   - component: {fileID: 480231813431110011}
   m_Layer: 8
   m_Name: Joint2
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2779,7 +2866,7 @@ GameObject:
   - component: {fileID: 937793557274343775}
   m_Layer: 8
   m_Name: Joint4
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2993,7 +3080,7 @@ GameObject:
   - component: {fileID: 6254137800274518198}
   m_Layer: 8
   m_Name: Joint5
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3203,7 +3290,7 @@ GameObject:
   - component: {fileID: 249613685525993726}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3275,7 +3362,7 @@ GameObject:
   - component: {fileID: 7786206510469656884}
   m_Layer: 8
   m_Name: Joint2
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3619,7 +3706,7 @@ GameObject:
   - component: {fileID: 4057997366295216751}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3687,7 +3774,7 @@ GameObject:
   - component: {fileID: 3138064805952729042}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3759,7 +3846,7 @@ GameObject:
   - component: {fileID: 2431031847147910695}
   m_Layer: 8
   m_Name: Joint6
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3969,7 +4056,7 @@ GameObject:
   - component: {fileID: 2064264979592697336}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4041,7 +4128,7 @@ GameObject:
   - component: {fileID: 8879518770559130279}
   m_Layer: 8
   m_Name: Joint4
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4251,7 +4338,7 @@ GameObject:
   - component: {fileID: 6582455604893698590}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4319,7 +4406,7 @@ GameObject:
   - component: {fileID: 6508015911496416925}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4387,7 +4474,7 @@ GameObject:
   - component: {fileID: 5390149982230777295}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4455,7 +4542,7 @@ GameObject:
   - component: {fileID: 484277996329227191}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4527,7 +4614,7 @@ GameObject:
   - component: {fileID: 5284150593235572311}
   m_Layer: 8
   m_Name: Joint4
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4741,7 +4828,7 @@ GameObject:
   - component: {fileID: 55073034761103851}
   m_Layer: 8
   m_Name: Joint1
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4955,7 +5042,7 @@ GameObject:
   - component: {fileID: 2665023002901137672}
   m_Layer: 8
   m_Name: Joint3
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5198,7 +5285,7 @@ GameObject:
   - component: {fileID: 2352150814939404484}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5266,7 +5353,7 @@ GameObject:
   - component: {fileID: 3832920296632458493}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5531,7 +5618,7 @@ GameObject:
   - component: {fileID: 2395165986485180837}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5603,7 +5690,7 @@ GameObject:
   - component: {fileID: 3596222723501947451}
   m_Layer: 8
   m_Name: Joint4
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5817,7 +5904,7 @@ GameObject:
   - component: {fileID: 991857676674212724}
   m_Layer: 8
   m_Name: Joint5
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6031,7 +6118,7 @@ GameObject:
   - component: {fileID: 3612808396209092722}
   m_Layer: 8
   m_Name: Joint5
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6245,7 +6332,7 @@ GameObject:
   - component: {fileID: 6651570106387655785}
   m_Layer: 8
   m_Name: Joint4
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6478,6 +6565,7 @@ Transform:
   m_Children:
   - {fileID: 3964816285231597078}
   - {fileID: 2449666041226138423}
+  - {fileID: 8882553041381449649}
   m_Father: {fileID: 2802397195483985480}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &3173976251755915515
@@ -6632,7 +6720,7 @@ GameObject:
   - component: {fileID: 2135999092022110057}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6704,7 +6792,7 @@ GameObject:
   - component: {fileID: 5951196435813054811}
   m_Layer: 8
   m_Name: Joint2
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7139,9 +7227,10 @@ MonoBehaviour:
   fullCooldown: 2
   tentacleProjectilePrefab: {fileID: 551101328120880779, guid: be0eeb0fc139a3c43bde66aefb67fd18, type: 3}
   sphereItem: {fileID: 551101328120880779, guid: 0dd1f0c42cfd6e545ad8d45c308d96d6, type: 3}
-  mouth: {fileID: 0}
+  eyes: {fileID: 0}
   randSkillTiming: 0
   page2: 1
+  page2CoolTime: 3
   bossHp: 4
   isOpenEyes: 0
   krakenBall: {fileID: 5492541526123576279, guid: 9495f14ad86a5fb4ba1cb46c71f9dd52, type: 3}
@@ -7161,7 +7250,7 @@ GameObject:
   - component: {fileID: 1653575981034425175}
   m_Layer: 8
   m_Name: Joint6
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7408,7 +7497,7 @@ GameObject:
   - component: {fileID: 8282313866278847389}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7476,7 +7565,7 @@ GameObject:
   - component: {fileID: 8341488201692500487}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7581,7 +7670,7 @@ GameObject:
   - component: {fileID: 2260110505057733347}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7653,7 +7742,7 @@ GameObject:
   - component: {fileID: 2245411530151312917}
   m_Layer: 8
   m_Name: Joint3
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7867,7 +7956,7 @@ GameObject:
   - component: {fileID: 81444142098645398}
   m_Layer: 8
   m_Name: Joint5
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8077,7 +8166,7 @@ GameObject:
   - component: {fileID: 1894592241502695496}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8149,7 +8238,7 @@ GameObject:
   - component: {fileID: 3807512853529617675}
   m_Layer: 8
   m_Name: Joint3
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8359,7 +8448,7 @@ GameObject:
   - component: {fileID: 7509338746966579470}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8431,7 +8520,7 @@ GameObject:
   - component: {fileID: 7877894369874883779}
   m_Layer: 8
   m_Name: Joint1
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8641,7 +8730,7 @@ GameObject:
   - component: {fileID: 4440274497608991500}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8709,7 +8798,7 @@ GameObject:
   - component: {fileID: 4322791542397675593}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8777,7 +8866,7 @@ GameObject:
   - component: {fileID: 597459080014070093}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8849,7 +8938,7 @@ GameObject:
   - component: {fileID: 5386880917757318937}
   m_Layer: 8
   m_Name: Joint2
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9059,7 +9148,7 @@ GameObject:
   - component: {fileID: 4764375526270999091}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9127,7 +9216,7 @@ GameObject:
   - component: {fileID: 778311184502709525}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9199,7 +9288,7 @@ GameObject:
   - component: {fileID: 2957178417893240096}
   m_Layer: 8
   m_Name: Joint5
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9496,7 +9585,7 @@ GameObject:
   - component: {fileID: 2264020872507881605}
   m_Layer: 8
   m_Name: Tentacle
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

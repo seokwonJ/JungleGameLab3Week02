@@ -21,6 +21,8 @@ public class TentacleProjectile : MonoBehaviour
     GameObject bossObj;
     GameObject playerObj;
 
+
+
     Transform[] points = new Transform[2];
 
     void Start()
@@ -87,11 +89,13 @@ public class TentacleProjectile : MonoBehaviour
     {
         if (other.CompareTag("Spear") && isMoving) // 장애물과 충돌하면
         {
+            Camera.main.GetComponent<CameraController>().StartShake(0.4f, 0.4f);
             ReturnStart();
         }
         if (other.CompareTag("Player") && isMoving) // 장애물과 충돌하면
         {
             print("Player die");
+            GameManager.Instance.GameOver();
         }
     }
 

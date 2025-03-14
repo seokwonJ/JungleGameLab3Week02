@@ -16,7 +16,7 @@ public class ShopUiManager : MonoBehaviour
 
     public void GoStart()
     {
-        GameManager.Instance.GoInGameScene();
+        GameManager.Instance.GameOver();
     }
 
     public void UpdatePurchase()

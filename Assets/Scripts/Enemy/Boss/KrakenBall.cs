@@ -1,3 +1,4 @@
+using System.Transactions;
 using UnityEngine;
 
 public class KrakenBall : MonoBehaviour
@@ -10,11 +11,16 @@ public class KrakenBall : MonoBehaviour
         transform.position += transform.up * Time.deltaTime * speed;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.tag == "Player")
+        if (other.tag == "Player")
         {
+            GameManager.Instance.GameOver();
             print("Player die");
+        }
+        else if (other.tag == "Obstacle") 
+        {
+            Destroy(gameObject);
         }
     }
 }

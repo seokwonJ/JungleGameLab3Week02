@@ -20,10 +20,10 @@ public class PlayerHealth : MonoBehaviour
     {
         if (invincibility) return;  // 무적
 
-        if (other.CompareTag("Dead")) // 보스와 충돌하면
-        {
-            TakeDamage(); // 데미지 받기 (10)
-        }
+        //if (other.CompareTag("Dead")) // 보스와 충돌하면
+        //{
+        //    TakeDamage(); // 데미지 받기 (10)
+        //}
         //if (other.CompareTag("Enemy2")) // 새와 충돌하면
         //{
         //    TakeDamage(10); // 데미지 받기 (10)
@@ -41,6 +41,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage()
     {
         print("Player Die");
+        GameManager.Instance.GameOver();
     }
 
     void Die()
@@ -61,3 +62,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
 }
+
+
+// 말풍선처럼 이빨모양
+// 멈추는 시간 조금 더 짧게

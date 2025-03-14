@@ -27,8 +27,7 @@ public class KrakenMove : MonoBehaviour
 
     public GameObject tentacleProjectilePrefab;
     public GameObject sphereItem;
-    public GameObject mouth;
-
+    public GameObject eyes;
     [SerializeField] float randSkillTiming; // skill1 랜덤으로 사용하는 타이밍
     float nowSkillTiming = 0;
     float beforeSpeed;
@@ -43,6 +42,8 @@ public class KrakenMove : MonoBehaviour
 
     public int bossHp;
     public bool isOpenEyes;
+    private Color32 krakenLegColor = new Color32(13, 66, 85, 255);
+    private Color32 krakenBodyColor = new Color32(16, 48, 59, 255);
 
     void Start()
     {
@@ -65,7 +66,7 @@ public class KrakenMove : MonoBehaviour
         }
 
         randSkillTiming = Random.Range(5f, 8f); // skill1 랜덤으로 사용하는 타이밍
-        mouth = transform.GetChild(0).GetChild(1).gameObject;
+        eyes = transform.GetChild(0).GetChild(1).gameObject;
         beforeSpeed = speed;
         cameraController = Camera.main.GetComponent<CameraController>();
     }
@@ -140,20 +141,36 @@ public class KrakenMove : MonoBehaviour
 
     public void ChangePage(int bossHp)
     {
+        Camera.main.GetComponent<CameraController>().StartShake(0.4f, 0.4f);
+
         if (bossHp == 3)
         {
+            krakenLegColor = new Color32(75, 66, 85, 255);
+            krakenBodyColor = new Color32(75, 48, 59, 255);
             speed += 1;
             page2 = true;
         }
         else if (bossHp == 2)
         {
+            krakenLegColor = new Color32(150, 66, 85, 255);
+            krakenBodyColor = new Color32(150, 48, 59, 255);
             speed += 1;
             page2CoolTime -= 1;
         }
         else if (bossHp == 1)
         {
+            krakenLegColor = new Color32(200, 66, 85, 255);
+            krakenBodyColor = new Color32(200, 48, 59, 255);
             speed += 1;
             page2CoolTime -= 1;
+        }
+        transform.GetChild(0).GetComponent<SpriteRenderer>().color = krakenBodyColor;
+        for (int i = 0;i < 5;i++)
+        {
+            for (int j = 0; j < 6; j++)
+            {
+                transform.GetChild(0).GetChild(0).GetChild(i).GetChild(j).GetComponent<SpriteRenderer>().color = krakenLegColor;
+            }
         }
     }
 
@@ -206,12 +223,12 @@ public class KrakenMove : MonoBehaviour
     {
         isOpenEyes = true;
         //transform.tag = "BossSkill";
-        mouth.SetActive(true);
+        eyes.SetActive(true);
         speed = beforeSpeed / 2;
         yield return new WaitForSeconds(2f);
         //transform.tag = "Boss";
         isOpenEyes = false;
-        mouth.SetActive(false);
+        eyes.SetActive(false);
         speed = beforeSpeed;
     }
 
@@ -381,6 +398,8 @@ public class KrakenMove : MonoBehaviour
         if (other.CompareTag("Spear") && isOpenEyes)
         {
             bossHp -= 1;
+            isOpenEyes = false;
+            eyes.SetActive(false);
             print(bossHp);
             ChangePage(bossHp);
         }
@@ -403,9 +422,9 @@ public class KrakenMove : MonoBehaviour
         if (page2)
         {
             print("page2 change projectileColor");
-            bulletObj.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color32(150, 66, 85, 255);
-            bulletObj.transform.GetChild(0).GetComponent<LineRenderer>().endColor = new Color32(150, 66, 85, 255);
-            bulletObj.transform.GetChild(0).GetComponent<LineRenderer>().startColor = new Color32(150, 66, 85, 255);
+            bulletObj.transform.GetChild(0).GetComponent<SpriteRenderer>().color = krakenLegColor;
+            bulletObj.transform.GetChild(0).GetComponent<LineRenderer>().endColor = krakenLegColor;
+            bulletObj.transform.GetChild(0).GetComponent<LineRenderer>().startColor = krakenLegColor;
         }
 
 

@@ -64,15 +64,22 @@ public class SharkMove : MonoBehaviour
     //    }
     //}
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (isDead) return;
-        if (collision.CompareTag("Spear"))
+        if (other.CompareTag("Spear"))
         {
-            // 충돌 시 270도 회전 후 전진하고, 90도 회전 후 전진
             print("Dead");
             isDead = true;
             TimeManager.Instance.HitStop(0.4f);
+            
+        }
+        if (other.CompareTag("PlayerBullet"))
+        {
+            print("Dead");
+            isDead = true;
+            TimeManager.Instance.HitStop(0.4f);
+            Destroy(other.gameObject);
         }
     }
 
