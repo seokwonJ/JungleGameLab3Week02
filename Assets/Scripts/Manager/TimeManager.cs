@@ -6,8 +6,8 @@ public class TimeManager : MonoBehaviour
     static TimeManager _instance;
     public static TimeManager Instance { get { return _instance; } private set { } }
 
-    private float playTime = 0;
-    private float bulletTimeGauge = 100;
+    public float playTime = 0;
+    public float bulletTimeGauge = 100;
     private bool isbulletTime;
     private bool waiting;
 
@@ -63,6 +63,10 @@ public class TimeManager : MonoBehaviour
             if (bulletTimeGauge <= 100)
             {
                 bulletTimeGauge += Time.unscaledDeltaTime * 10;
+            }
+            else
+            {
+                bulletTimeGauge = 100;
             }
         }
     }

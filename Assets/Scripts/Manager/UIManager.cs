@@ -1,135 +1,153 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEditor.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    static UIManager _instance;
-    public static UIManager Instance { get { return _instance; } private set { } }
+    //static uimanager _instance;
+    //public static uimanager instance { get { return _instance; } private set { } }
 
-    //public bool IsReadyUI { get; private set; }
+    ////public bool isreadyui { get; private set; }
 
-    [Header("UI")]
-    public GameObject startUI;
-    public GameObject playUI;
-    public GameObject overUI;
-    public Button RestartBtn;
-    public GameObject clearUI;
-    public Text gameTime;
-    public GameObject bossUI;
-    public Text shaksfinUI;
+    //[header("ui")]
+    //public gameobject startui;
+    //public gameobject playui;
+    //public gameobject overui;
+    //public button restartbtn;
+    //public gameobject clearui;
+    //public text gametime;
+    //public gameobject bossui;
+    //public text shaksfinui;
 
+    public TMP_Text timeText;
+    public TMP_Text stageText;
+    public Image timeGauge;
 
-    public int testNum = 1;
-
-    void Awake()
+    private void Start()
     {
-        if (_instance == null)
-        {
-            _instance = this;
-            FindUI();
-        }
+        stageText.text = "stage " + GameManager.Instance.stageNum.ToString();
     }
 
-    void Start()
+    private void Update()
     {
-        UpdateGameStartUI();
+        int minutes = (int)(TimeManager.Instance.playTime / 60); // 분 계산 (정수형 변환)
+        int seconds = (int)(TimeManager.Instance.playTime % 60); // 초 계산 (정수형 변환)
+
+        timeText.text = minutes.ToString("D2") + ":" + seconds.ToString("D2");
+        timeGauge.fillAmount = TimeManager.Instance.bulletTimeGauge / 100;
     }
+    //public int testnum = 1;
 
-    void Update()
-    {
-        UpdateShaksfinUI();
-    }
+    //void awake()
+    //{
+    //    if (_instance == null)
+    //    {
+    //        _instance = this;
+    //        findui();
+    //    }
+    //}
 
-    void FindUI()
-    {
-        startUI = transform.GetChild(0).gameObject;
-        playUI = transform.GetChild(1).gameObject;
-        overUI = transform.GetChild(2).gameObject;
-        clearUI = transform.GetChild(3).gameObject;
+    //void start()
+    //{
+    //    updategamestartui();
+    //}
 
-        // 재시작 버튼
-        RestartBtn = overUI.transform.GetChild(1).GetComponent<Button>();
-        //RestartBtn.onClick.AddListener(() => GameManager.Instance.GoShopScene());
-        gameTime = transform.GetChild(4).GetComponent<Text>();
+    //void update()
+    //{
+    //    updateshaksfinui();
+    //}
 
-        bossUI = transform.GetChild(5).gameObject;
-        shaksfinUI = transform.GetChild(6).GetComponent<Text>();
+    //void findui()
+    //{
+    //    startui = transform.getchild(0).gameobject;
+    //    playui = transform.getchild(1).gameobject;
+    //    overui = transform.getchild(2).gameobject;
+    //    clearui = transform.getchild(3).gameobject;
 
-        //IsReadyUI = true;
-    }
+    //    // 재시작 버튼
+    //    restartbtn = overui.transform.getchild(1).getcomponent<button>();
+    //    //restartbtn.onclick.addlistener(() => gamemanager.instance.goshopscene());
+    //    gametime = transform.getchild(4).getcomponent<text>();
 
-    public void UpdateGameStartUI()
-    {
-        startUI.SetActive(true);
-        gameTime.gameObject.SetActive(true);
-        shaksfinUI.gameObject.SetActive(true);
-    }
+    //    bossui = transform.getchild(5).gameobject;
+    //    shaksfinui = transform.getchild(6).getcomponent<text>();
 
-    public void UpdateGamePlayingUI()
-    {
-        startUI.SetActive(false);
-        playUI.SetActive(true);
-        shaksfinUI.gameObject.SetActive(true);
-    }
+    //    //isreadyui = true;
+    //}
 
-    public void UpdateGameClearUI()
-    {
-        playUI.SetActive(false);
-        bossUI.SetActive(false);
-        clearUI.SetActive(true);
-    }
+    //public void updategamestartui()
+    //{
+    //    startui.setactive(true);
+    //    gametime.gameobject.setactive(true);
+    //    shaksfinui.gameobject.setactive(true);
+    //}
 
-    public void UpdateGameOverUI()
-    {
-        playUI.SetActive(false);
-        overUI.SetActive(true);
-    }
+    //public void updategameplayingui()
+    //{
+    //    startui.setactive(false);
+    //    playui.setactive(true);
+    //    shaksfinui.gameobject.setactive(true);
+    //}
 
-    public void UpdateBossStart()
-    {
-        bossUI.SetActive(true);
-        playUI.SetActive(true);
-    }
+    //public void updategameclearui()
+    //{
+    //    playui.setactive(false);
+    //    bossui.setactive(false);
+    //    clearui.setactive(true);
+    //}
 
-    public void UpdateWarningTime()
-    {
-        gameTime.color = Color.red;
-    }
+    //public void updategameoverui()
+    //{
+    //    playui.setactive(false);
+    //    overui.setactive(true);
+    //}
 
-    public void UpdateShaksfinUI()
-    {
-        shaksfinUI.text = $"Shaksfin: {StateManager.Instance.MyCoin}";
-    }
+    //public void updatebossstart()
+    //{
+    //    bossui.setactive(true);
+    //    playui.setactive(true);
+    //}
 
-    public void UpdateGoShopUI()
-    {
-        foreach (Transform ui in transform)
-            ui.gameObject.SetActive(false);
-    }
+    //public void updatewarningtime()
+    //{
+    //    gametime.color = color.red;
+    //}
 
-    public void UpdateTimeText(int playTime)
-    {
-        gameTime.text = playTime.ToString() + "m";
-    }
+    //public void updateshaksfinui()
+    //{
+    //    shaksfinui.text = $"shaksfin: {statemanager.instance.mycoin}";
+    //}
 
-    // 재시작 버튼
-    public void GameReplay()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+    //public void updategoshopui()
+    //{
+    //    foreach (transform ui in transform)
+    //        ui.gameobject.setactive(false);
+    //}
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.name == "IntegrateScene")
-        {
-            FindUI();
+    //public void updatetimetext(int playtime)
+    //{
+    //    gametime.text = playtime.tostring() + "m";
+    //}
 
-            Debug.LogWarning("게임 씬");
-        }
-        else if (scene.name == "SceneShop")
-        {
-            Debug.LogWarning("상점 씬");
-        }
-    }
+    //// 재시작 버튼
+    //public void gamereplay()
+    //{
+    //    scenemanager.loadscene(scenemanager.getactivescene().buildindex);
+    //}
+
+    //void onsceneloaded(scene scene, loadscenemode mode)
+    //{
+    //    if (scene.name == "integratescene")
+    //    {
+    //        findui();
+
+    //        debug.logwarning("게임 씬");
+    //    }
+    //    else if (scene.name == "sceneshop")
+    //    {
+    //        debug.logwarning("상점 씬");
+    //    }
+    //}
 }
