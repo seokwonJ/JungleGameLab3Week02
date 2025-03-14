@@ -33,14 +33,16 @@ public class KrakenMove : MonoBehaviour
     float nowSkillTiming = 0;
     float beforeSpeed;
 
-    bool page2;
+    public bool page2;
     float page2Speed = 1f;
     bool isPageSkill;
     float page2CoolTimeNow = 0f;
-    float page2CoolTime = 3f;
+    public float page2CoolTime = 3f;
     CameraController cameraController;
     Vector3 krakenScale;
 
+    public int bossHp;
+    public bool isOpenEyes;
 
     void Start()
     {
@@ -136,6 +138,26 @@ public class KrakenMove : MonoBehaviour
         }
     }
 
+    public void ChangePage(int bossHp)
+    {
+        if (bossHp == 3)
+        {
+            speed += 1;
+            page2 = true;
+        }
+        else if (bossHp == 2)
+        {
+            speed += 1;
+            page2CoolTime -= 1;
+        }
+        else if (bossHp == 1)
+        {
+            speed += 1;
+            page2CoolTime -= 1;
+        }
+    }
+
+
     public void StartPage2()
     {
         page2 = true;
@@ -182,11 +204,13 @@ public class KrakenMove : MonoBehaviour
 
     IEnumerator Skill1Coroutine()
     {
-        transform.tag = "BossSkill";
+        isOpenEyes = true;
+        //transform.tag = "BossSkill";
         mouth.SetActive(true);
         speed = beforeSpeed / 2;
         yield return new WaitForSeconds(2f);
-        transform.tag = "Boss";
+        //transform.tag = "Boss";
+        isOpenEyes = false;
         mouth.SetActive(false);
         speed = beforeSpeed;
     }
@@ -213,7 +237,7 @@ public class KrakenMove : MonoBehaviour
         while (true)
         {
             Rotate();
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(0.3f);
             canon.SetActive(true);
             Camera.main.GetComponent<CameraController>().StartShake(0.2f, 0.2f);
 
@@ -255,6 +279,7 @@ public class KrakenMove : MonoBehaviour
         {
             GameObject ball = Instantiate(krakenBall, transform.position, Quaternion.identity);
             ball.transform.up = transform.up;
+            ball.GetComponent<KrakenBall>().speed = 25;
             transform.Rotate(0, 0, 20);
             cameraController.StartShake(0.07f, 0.08f);
             if (ballCount > maxCount)
@@ -337,7 +362,7 @@ public class KrakenMove : MonoBehaviour
             // 공 생성
             GameObject ball = Instantiate(krakenBall, transform.position, Quaternion.identity);
             ball.transform.up = direction;
-            ball.GetComponent<KrakenBall>().speed = 12;
+            ball.GetComponent<KrakenBall>().speed = 30;
         }
 
         //yield return new WaitForSeconds(2f);
@@ -353,11 +378,11 @@ public class KrakenMove : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Spear") && transform.CompareTag("BossSkill"))
+        if (other.CompareTag("Spear") && isOpenEyes)
         {
-            Instantiate(sphereItem, transform.position, Quaternion.identity);
-            Destroy(other.gameObject);
-            ///fadsasdasd
+            bossHp -= 1;
+            print(bossHp);
+            ChangePage(bossHp);
         }
     }
 
@@ -372,7 +397,9 @@ public class KrakenMove : MonoBehaviour
 
         // 탄환 생성 및 발사
         GameObject bulletObj = Instantiate(tentacleProjectilePrefab, tentacleToAttack.position, Quaternion.identity);
+        bulletObj.GetComponent<TentacleProjectile>().startPosition = transform.position;
         bulletObj.GetComponent<TentacleProjectile>().targetPosition = player.position;
+        bulletObj.GetComponent<TentacleProjectile>().SetTail(transform, bulletObj.transform);
         if (page2)
         {
             print("page2 change projectileColor");

@@ -23,32 +23,22 @@ public class TentacleProjectile : MonoBehaviour
 
     Transform[] points = new Transform[2];
 
-
-    private void Awake()
-    {
-        bossObj = GameObject.FindGameObjectWithTag("Boss");
-        playerObj = GameObject.FindGameObjectWithTag("Player");
-    }
-
     void Start()
     {
         startPosition = transform.position;
-        targetPosition = new Vector3(playerObj.transform.position.x, playerObj.transform.position.y, 0f); // 3D 좌표값 2D로 변경
-        returnSpeed = returnSpeed * StateManager.Instance.ReloadingTime(); // 돌아오는 속도
-        SetTail();
-
+        //targetPosition = new Vector3(playerObj.transform.position.x, playerObj.transform.position.y, 0f); // 3D 좌표값 2D로 변경
+        //returnSpeed = returnSpeed * StateManager.Instance.ReloadingTime(); // 돌아오는 속도
+        //SetTail();
         isMoving = true;
     }
 
-    void SetTail()
+    public void SetTail(Transform boss, Transform ball)
     {
-        points[0] = bossObj.transform;
-        points[1] = gameObject.transform;
-
+        points[0] = boss.transform;
+        points[1] = ball.transform;
+        bossObj = boss.transform.gameObject;
         tail.GetComponent<LineController>().SetUpLine(points);
     }
-
-
 
     void Update()
     {
@@ -95,19 +85,16 @@ public class TentacleProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && isMoving) // 장애물과 충돌하면
+        if (other.CompareTag("Spear") && isMoving) // 장애물과 충돌하면
         {
             ReturnStart();
+        }
+        if (other.CompareTag("Player") && isMoving) // 장애물과 충돌하면
+        {
+            print("Player die");
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player") && isMoving) // 장애물과 충돌하면
-        {
-            ReturnStart();
-        }
-    }
 
     // 돌아오기 시작할 때 충돌 판정 안나도록 설정
     void ReturnStart()

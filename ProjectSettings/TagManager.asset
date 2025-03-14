@@ -10,6 +10,9 @@ TagManager:
   - Enemy
   - Dead
   - Enemy2
+  - BossCanon
+  - Item
+  - Invincibility
   layers:
   - Default
   - TransparentFX

@@ -35,19 +35,24 @@ public class SharkMove : MonoBehaviour
         if (isDead) return;
         if (!isReversing && target != null)
         {
-            // 플레이어 방향으로 이동
-            Vector2 direction = (target.position - transform.position).normalized;
-            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            float angle = Mathf.LerpAngle(transform.eulerAngles.z, targetAngle, rotationSpeed * Time.deltaTime);
-            transform.rotation = Quaternion.Euler(0, 0, angle); // 부드러운 회전 적용
-
-            transform.position += transform.right * speed * Time.deltaTime; // 현재 방향 기준 이동
+            Move();
             if (Vector2.Distance(transform.position, target.position) < attackDistance && !isAttack)
             {
                 isAttack = true;
                 SharkAttack();
-            } 
+            }
         }
+    }
+
+    private void Move()
+    {
+        // 플레이어 방향으로 이동
+        Vector2 direction = (target.position - transform.position).normalized;
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float angle = Mathf.LerpAngle(transform.eulerAngles.z, targetAngle, rotationSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(0, 0, angle); // 부드러운 회전 적용
+
+        transform.position += transform.right * speed * Time.deltaTime; // 현재 방향 기준 이동
     }
 
     //void OnCollisionEnter2D(Collision2D collision)

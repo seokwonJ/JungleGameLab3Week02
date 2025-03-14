@@ -52,10 +52,12 @@ public class PlayerHealth : MonoBehaviour
     public void SetInvincibility()
     {
         invincibility = true;
+        gameObject.tag = "Invincibility";
     }
     public void SetNotInvincibility()
     {
         invincibility = false;
+        gameObject.tag = "Player";
     }
 
 }
