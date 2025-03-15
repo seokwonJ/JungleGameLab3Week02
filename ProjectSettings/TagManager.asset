@@ -14,6 +14,7 @@ TagManager:
   - Item
   - Invincibility
   - PlayerBullet
+  - Exit
   layers:
   - Default
   - TransparentFX

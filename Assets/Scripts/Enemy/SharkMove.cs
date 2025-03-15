@@ -4,7 +4,7 @@ using UnityEngine.Rendering;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 
-public class SharkMove : MonoBehaviour
+public class SharkMove : Enemy
 {
     public Transform target; // 플레이어의 Transform
     public float speed = 3f; // 이동 속도
@@ -32,6 +32,7 @@ public class SharkMove : MonoBehaviour
 
     void Update()
     {
+        if (!isPlayerComming) return;
         if (isDead) return;
         if (!isReversing && target != null)
         {
@@ -71,6 +72,7 @@ public class SharkMove : MonoBehaviour
         {
             print("Dead");
             isDead = true;
+            StageManger.Instance.CountKillEnemy();
             TimeManager.Instance.HitStop(0.4f);
             
         }
@@ -78,6 +80,7 @@ public class SharkMove : MonoBehaviour
         {
             print("Dead");
             isDead = true;
+            StageManger.Instance.CountKillEnemy();
             TimeManager.Instance.HitStop(0.4f);
             Destroy(other.gameObject);
         }

@@ -286,10 +286,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a01a1b32e466a46b741cf0d7ca2271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerComming: 0
   target: {fileID: 0}
   bullet: {fileID: 5492541526123576279, guid: 32bbb6f286876c845af34c90efe04679, type: 3}
   canon: {fileID: 1953517300426934525}
   attackDistance: 10
-  reloadTime: 4
+  reloadTime: 2
   speed: 5
   rotationSpeed: 5

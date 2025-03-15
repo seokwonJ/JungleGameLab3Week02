@@ -196,14 +196,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 10
   acceleration: 50
-  deceleration: 20
-  dashSpeed: 30
-  dashDuration: 0.2
+  deceleration: 5
+  dashSpeed: 25
+  dashDuration: 0.25
   dashCooldown: 0.3
   drag: 1
-  attackPushForce: 3
+  attackPushForce: 2
   playerHp: {fileID: 3114062409201018637}
   body: {fileID: 2418989068129656108}
+  cameraController: {fileID: 0}
 --- !u!50 &5494529557254148686
 Rigidbody2D:
   serializedVersion: 5
@@ -218,7 +219,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_AngularDamping: 2
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1620,10 +1621,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spear
       objectReference: {fileID: 0}
+    - target: {fileID: 2339250305236570343, guid: c45f17b34bed2a043b1720fa0f6598af, type: 3}
+      propertyPath: m_TagString
+      value: Spear
+      objectReference: {fileID: 0}
     - target: {fileID: 4307311405715844829, guid: c45f17b34bed2a043b1720fa0f6598af, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: f98f2b20cfb13ad4697176c25cd6715d, type: 2}
+    - target: {fileID: 4320090976739035760, guid: c45f17b34bed2a043b1720fa0f6598af, type: 3}
+      propertyPath: m_Size.x
+      value: 6.3622265
+      objectReference: {fileID: 0}
+    - target: {fileID: 4320090976739035760, guid: c45f17b34bed2a043b1720fa0f6598af, type: 3}
+      propertyPath: m_Size.y
+      value: 8.738565
+      objectReference: {fileID: 0}
+    - target: {fileID: 4320090976739035760, guid: c45f17b34bed2a043b1720fa0f6598af, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.020061137
+      objectReference: {fileID: 0}
+    - target: {fileID: 4320090976739035760, guid: c45f17b34bed2a043b1720fa0f6598af, type: 3}
+      propertyPath: m_Offset.y
+      value: 2.2798605
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2029986244418005321, guid: c45f17b34bed2a043b1720fa0f6598af, type: 3}
     - {fileID: 1836264240734040958, guid: c45f17b34bed2a043b1720fa0f6598af, type: 3}

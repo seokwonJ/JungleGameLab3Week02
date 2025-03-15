@@ -18,24 +18,14 @@ public class PlayerHealth : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+
+        if (other.CompareTag("Exit"))
+        {
+            GameManager.Instance.NextStage();
+        }
+
         if (invincibility) return;  // 무적
 
-        //if (other.CompareTag("Dead")) // 보스와 충돌하면
-        //{
-        //    TakeDamage(); // 데미지 받기 (10)
-        //}
-        //if (other.CompareTag("Enemy2")) // 새와 충돌하면
-        //{
-        //    TakeDamage(10); // 데미지 받기 (10)
-        //}
-        //if (other.CompareTag("Item"))
-        //{
-        //    Destroy(other.gameObject);
-        //}
-        //if (other.CompareTag("BossCanon"))
-        //{
-        //    TakeDamage(25); // 데미지 받기 (10)
-        //}
     }
 
     public void TakeDamage()

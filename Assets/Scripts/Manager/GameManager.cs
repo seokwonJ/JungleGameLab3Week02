@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [Header("컨텐츠")]
     public bool isGameOver;
     public bool isGameClear;
-    public int stageNum = 0;
+    public int stageNum = 1;
     GameObject playerObject;
 
     //[Header("소환")]
@@ -32,7 +32,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
     }
     
-    
+    public void NextStage()
+    {
+        stageNum += 1;
+        SceneManager.LoadScene(stageNum);
+    }
     
     public void GameOver()
     {

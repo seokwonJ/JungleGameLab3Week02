@@ -28,43 +28,4 @@ public class ShopObj : MonoBehaviour
         msgFailure.SetActive(false);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Spear"))
-        {
-            switch (characterState)
-            {
-                case UpgradeItem.SpearCount:
-                    if (StateManager.Instance.BuySpear())
-                    {
-                        StartCoroutine(Success());
-                    }
-                    else
-                    {
-                        StartCoroutine(Failure());
-                    }
-                    break;
-                case UpgradeItem.HealthPower:
-                    if (StateManager.Instance.HpUpgrade())
-                    {
-                        StartCoroutine(Success());
-                    }
-                    else
-                    {
-                        StartCoroutine(Failure());
-                    }
-                    break;
-                case UpgradeItem.ReroadingTime:
-                    if (StateManager.Instance.ReroadingUpgrade())
-                    {
-                        StartCoroutine(Success());
-                    }
-                    else
-                    {
-                        StartCoroutine(Failure());
-                    }
-                    break;
-            }
-        }
-    }
 }

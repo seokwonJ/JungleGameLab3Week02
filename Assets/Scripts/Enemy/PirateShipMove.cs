@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PirateShipMove : MonoBehaviour
+public class PirateShipMove : Enemy
 {
     public Transform target; // 플레이어의 Transform
     public GameObject bullet;
@@ -28,11 +28,13 @@ public class PirateShipMove : MonoBehaviour
                 target = playerObj.transform;
             }
         }
+        _reloadTime = reloadTime - 0.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isPlayerComming) return;
         if (isDead) return;
 
         Move();
@@ -66,7 +68,7 @@ public class PirateShipMove : MonoBehaviour
     IEnumerator shot()
     {
         canon.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         if (!isDead)
         {
             GameObject _bullet = Instantiate(bullet, transform.position, Quaternion.identity);
@@ -85,12 +87,14 @@ public class PirateShipMove : MonoBehaviour
             isDead = true;
             print("pirate die");
             TimeManager.Instance.HitStop(0.4f);
+            StageManger.Instance.CountKillEnemy();
         }
         if (other.CompareTag("PlayerBullet"))
         {
             print("Dead");
             isDead = true;
             TimeManager.Instance.HitStop(0.4f);
+            StageManger.Instance.CountKillEnemy();
             Destroy(other.gameObject);
         }
     }
