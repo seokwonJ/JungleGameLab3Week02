@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c38b2e07deb2fd342b5868194ce83837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerComming: 0
   target: {fileID: 0}
   bullet: {fileID: 5492541526123576279, guid: 32bbb6f286876c845af34c90efe04679, type: 3}
   canon: {fileID: 1953517300426934525}
@@ -252,7 +253,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!70 &4144208622180731097
 CapsuleCollider2D:
@@ -284,7 +285,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

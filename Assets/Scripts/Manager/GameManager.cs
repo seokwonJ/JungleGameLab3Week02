@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     
     public void GameOver()
     {
+        TimeManager.Instance.Dead();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

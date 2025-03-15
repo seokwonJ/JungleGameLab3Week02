@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b8ef285b5c1044da01db7ebb7325d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoss: 0
 --- !u!1 &2009643698526445626
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,6 +1030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc743235794dd3499bb6697321bc174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerComming: 0
   target: {fileID: 0}
   speed: 10
   rotationSpeed: 7
@@ -1037,6 +1039,7 @@ MonoBehaviour:
   bloodParticle: {fileID: 5095475880817196780}
   teeth: {fileID: 2254162210481745511}
   attackDistance: 4
+  rb: {fileID: 8736717704675803457}
 --- !u!256 &744148997120422602
 FrictionJoint2D:
   m_ObjectHideFlags: 0

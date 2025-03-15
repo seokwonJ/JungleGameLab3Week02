@@ -10,11 +10,11 @@ public class CameraController : MonoBehaviour
     public float followSpeed;
 
     private bool _isDash;
+    private bool _isBoss;
     private Camera mainCamera;
 
     void Start()
     {
-        
         mainCamera = transform.GetComponent<Camera>();
         // 카메라의 화면 경계를 월드 좌표로 변환
         ScreenArea = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, transform.position.z));
@@ -22,7 +22,11 @@ public class CameraController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_isDash)
+        if (_isBoss)
+        {
+            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, 25, Time.deltaTime * followSpeed * 3);
+        }
+        else if (_isDash)
         {
             mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, 14, Time.deltaTime * followSpeed);
         }
@@ -42,6 +46,17 @@ public class CameraController : MonoBehaviour
     {
         _isDash = false;
     }
+
+    public void StartBossCamera()
+    {
+        _isBoss = true;
+    }
+
+    public void EndBossCamera()
+    {
+        _isBoss = false;
+    }
+
 
     public void StartShake(float duration, float manitude)
     {

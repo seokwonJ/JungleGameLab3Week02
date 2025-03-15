@@ -25,6 +25,7 @@ public class StageManger : MonoBehaviour
     public GameObject enemy;
     private void Start()
     {
+        if (enemy == null) return;
         maxInStageEnemy = enemy.transform.childCount;
     }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using Unity.VisualScripting;
 using System.Runtime.InteropServices.WindowsRuntime;
+using NUnit;
 
 public class KrakenMove : MonoBehaviour
 {
@@ -44,6 +45,10 @@ public class KrakenMove : MonoBehaviour
     public bool isOpenEyes;
     private Color32 krakenLegColor = new Color32(13, 66, 85, 255);
     private Color32 krakenBodyColor = new Color32(16, 48, 59, 255);
+    public BossController bossController;
+    private bool end;
+    public CircleCollider2D circleCollider;
+
 
     void Start()
     {
@@ -73,6 +78,13 @@ public class KrakenMove : MonoBehaviour
 
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Z)) BossDamaged();
+        if (end)
+        {
+            StopAllCoroutines();
+            return;
+        } 
         if (player != null)
         {
             if (!isPageSkill)
@@ -137,6 +149,17 @@ public class KrakenMove : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            if (player == null)
+            {
+                GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+                if (playerObj != null)
+                {
+                    player = playerObj.transform;
+                }
+            }
+        }
     }
 
     public void ChangePage(int bossHp)
@@ -164,7 +187,12 @@ public class KrakenMove : MonoBehaviour
             speed += 1;
             page2CoolTime -= 1;
         }
-        transform.GetChild(0).GetComponent<SpriteRenderer>().color = krakenBodyColor;
+        else if (bossHp == 0)
+        {
+            end = true;
+            bossController.BossClear();
+        }
+            transform.GetChild(0).GetComponent<SpriteRenderer>().color = krakenBodyColor;
         for (int i = 0;i < 5;i++)
         {
             for (int j = 0; j < 6; j++)
@@ -254,7 +282,7 @@ public class KrakenMove : MonoBehaviour
         while (true)
         {
             Rotate();
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.5f);
             canon.SetActive(true);
             Camera.main.GetComponent<CameraController>().StartShake(0.2f, 0.2f);
 
@@ -323,6 +351,7 @@ public class KrakenMove : MonoBehaviour
 
         transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
         transform.tag = "Untagged";
+        circleCollider.enabled = false;
         // 작아져서 숨기
         while (true)
         {
@@ -359,6 +388,7 @@ public class KrakenMove : MonoBehaviour
             }
             yield return new WaitForEndOfFrame();
         }
+        circleCollider.enabled = true;
 
         transform.tag = "Boss";
         transform.GetChild(0).localScale = krakenScale;
@@ -397,12 +427,17 @@ public class KrakenMove : MonoBehaviour
     {
         if (other.CompareTag("Spear") && isOpenEyes)
         {
-            bossHp -= 1;
-            isOpenEyes = false;
-            eyes.SetActive(false);
-            print(bossHp);
-            ChangePage(bossHp);
+            BossDamaged();
         }
+    }
+
+    public void BossDamaged()
+    {
+        bossHp -= 1;
+        isOpenEyes = false;
+        eyes.SetActive(false);
+        print(bossHp);
+        ChangePage(bossHp);
     }
 
 

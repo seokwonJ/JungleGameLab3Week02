@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!isPlayerComming)
+        if (!isPlayerComming && (other.tag == "Player" || other.tag == "Invincibility"))
         {
             isPlayerComming = true;
             for (int i =0;i <Enemys.Length; i++)

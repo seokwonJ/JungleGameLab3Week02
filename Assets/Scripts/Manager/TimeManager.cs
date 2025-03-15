@@ -12,6 +12,7 @@ public class TimeManager : MonoBehaviour
     private bool waiting;
 
     private int hitNum = 0;
+    private bool isClear;
 
     void Awake()
     {
@@ -26,12 +27,21 @@ public class TimeManager : MonoBehaviour
 
     private void Update()
     {
-        playTime += Time.unscaledDeltaTime;
+        if (!isClear)
+        {
+            playTime += Time.unscaledDeltaTime;
+        } 
         BulletTime();
         if (hitNum > 0 && !waiting) WaitingHitStop(0.2f);
     }
 
-
+    public void Dead()
+    {
+        bulletTimeGauge = 100;
+        isbulletTime = false;
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f; // 기본값 복구
+    }
 
     public void BulletTime()
     {
@@ -98,5 +108,10 @@ public class TimeManager : MonoBehaviour
         Time.timeScale = isbulletTime ? 0.1f : 1.0f;
         hitNum -= 1;
         waiting = false;
+    }
+
+    public void Clear()
+    {
+        isClear = true;
     }
 }

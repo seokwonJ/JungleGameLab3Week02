@@ -176,7 +176,8 @@ GameObject:
   - component: {fileID: 64418453}
   - component: {fileID: 64418455}
   - component: {fileID: 64418454}
-  m_Layer: 0
+  - component: {fileID: 64418456}
+  m_Layer: 7
   m_Name: Square (3)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -299,6 +300,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &64418456
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64418452}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 119
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &85680420
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,7 +1007,7 @@ Transform:
   m_GameObject: {fileID: 370217429}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 173.48, y: 2.92, z: 9.999929}
+  m_LocalPosition: {x: 173.48, y: -7.9, z: 9.999929}
   m_LocalScale: {x: 2.0375, y: 14.099775, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1565,10 +1593,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boat
       objectReference: {fileID: 0}
-    - target: {fileID: 3658460418154360792, guid: dbecbf49e0f27ee44a63f824ffcae74a, type: 3}
-      propertyPath: dashCooldown
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 8248272911471217327, guid: dbecbf49e0f27ee44a63f824ffcae74a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.97
@@ -1630,7 +1654,8 @@ GameObject:
   - component: {fileID: 740033378}
   - component: {fileID: 740033380}
   - component: {fileID: 740033379}
-  m_Layer: 0
+  - component: {fileID: 740033381}
+  m_Layer: 7
   m_Name: Square (4)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -1753,6 +1778,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &740033381
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740033377}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 119
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &781321081
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,7 +2308,8 @@ GameObject:
   - component: {fileID: 1030098450}
   - component: {fileID: 1030098452}
   - component: {fileID: 1030098451}
-  m_Layer: 0
+  - component: {fileID: 1030098453}
+  m_Layer: 7
   m_Name: Square
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -2379,6 +2432,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &1030098453
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030098449}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 119
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1001 &1049502671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2394,6 +2474,22 @@ PrefabInstance:
     - target: {fileID: 744148997120422602, guid: fc54a8b289bf8a644ba7296cc46c21ac, type: 3}
       propertyPath: m_ConnectedAnchor.y
       value: 1.4181714
+      objectReference: {fileID: 0}
+    - target: {fileID: 1034551000222954991, guid: fc54a8b289bf8a644ba7296cc46c21ac, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009643698526445626, guid: fc54a8b289bf8a644ba7296cc46c21ac, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2254162210481745511, guid: fc54a8b289bf8a644ba7296cc46c21ac, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717653160912849573, guid: fc54a8b289bf8a644ba7296cc46c21ac, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2802397195483985480, guid: fc54a8b289bf8a644ba7296cc46c21ac, type: 3}
       propertyPath: m_LocalScale.y
@@ -2439,9 +2535,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3117510289406153957, guid: fc54a8b289bf8a644ba7296cc46c21ac, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4753475039817145927, guid: fc54a8b289bf8a644ba7296cc46c21ac, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359950495641834967, guid: fc54a8b289bf8a644ba7296cc46c21ac, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064319532327815218, guid: fc54a8b289bf8a644ba7296cc46c21ac, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223725326660700996, guid: fc54a8b289bf8a644ba7296cc46c21ac, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6332261136603711020, guid: fc54a8b289bf8a644ba7296cc46c21ac, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6974489897007497795, guid: fc54a8b289bf8a644ba7296cc46c21ac, type: 3}
       propertyPath: m_Name
       value: Shark
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974489897007497795, guid: fc54a8b289bf8a644ba7296cc46c21ac, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7955708566985526457, guid: fc54a8b289bf8a644ba7296cc46c21ac, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3245,7 +3373,7 @@ GameObject:
   - component: {fileID: 1450402746}
   - component: {fileID: 1450402748}
   - component: {fileID: 1450402747}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3712,7 +3840,8 @@ GameObject:
   - component: {fileID: 1765090029}
   - component: {fileID: 1765090031}
   - component: {fileID: 1765090030}
-  m_Layer: 0
+  - component: {fileID: 1765090032}
+  m_Layer: 7
   m_Name: Square (2)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -3835,6 +3964,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &1765090032
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765090028}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 119
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &1771223841
 GameObject:
   m_ObjectHideFlags: 0
@@ -5282,7 +5438,8 @@ GameObject:
   - component: {fileID: 2103373414}
   - component: {fileID: 2103373416}
   - component: {fileID: 2103373415}
-  m_Layer: 0
+  - component: {fileID: 2103373417}
+  m_Layer: 7
   m_Name: Square (1)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -5405,6 +5562,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &2103373417
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103373413}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 119
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1001 &2105961207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5503,7 +5687,8 @@ GameObject:
   - component: {fileID: 2113031821}
   - component: {fileID: 2113031823}
   - component: {fileID: 2113031822}
-  m_Layer: 0
+  - component: {fileID: 2113031824}
+  m_Layer: 7
   m_Name: Square (5)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -5626,6 +5811,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &2113031824
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113031820}
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 119
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &2130436444
 GameObject:
   m_ObjectHideFlags: 0

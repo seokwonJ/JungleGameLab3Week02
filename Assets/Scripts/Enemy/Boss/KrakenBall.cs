@@ -13,7 +13,7 @@ public class KrakenBall : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" || other.tag == "Invincibility" )
         {
             GameManager.Instance.GameOver();
             print("Player die");
