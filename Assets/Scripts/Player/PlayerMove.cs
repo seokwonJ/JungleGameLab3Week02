@@ -87,8 +87,10 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    public GameObject tail;
     IEnumerator Dash()
     {
+        tail.SetActive(true);
         isDashing = true;
         playerHp.SetInvincibility();
         lastDashTime = Time.time;
@@ -100,6 +102,7 @@ public class PlayerMove : MonoBehaviour
         cameraController.EndDashCamera();
         isDashing = false;
         playerHp.SetNotInvincibility();
+        tail.SetActive(false);
     }
 
     public void  AttackPush(Vector3 direction)
@@ -107,6 +110,7 @@ public class PlayerMove : MonoBehaviour
         StopAllCoroutines();
         cameraController.EndDashCamera();
         isDashing = false;
+        tail.SetActive(false);
         playerHp.SetNotInvincibility();
         Vector2 pushDirection = direction; // 현재 바라보는 방향
         rb.linearVelocity = Vector3.zero;

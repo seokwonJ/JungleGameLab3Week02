@@ -11,7 +11,7 @@ public class BossController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isBossStart && collision.tag == "Player")
+        if (!isBossStart && (collision.tag == "Player" || collision.tag == "Invincibility"))
         {
             isBossStart = true;
             StartCoroutine(BossStart());

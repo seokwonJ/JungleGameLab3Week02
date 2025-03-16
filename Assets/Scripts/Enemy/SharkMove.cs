@@ -32,7 +32,7 @@ public class SharkMove : Enemy
         _speed = speed;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!isPlayerComming) return;
         if (isDead) return;
@@ -60,34 +60,42 @@ public class SharkMove : Enemy
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        print("dfds3213a");
-        if (collision.collider.CompareTag("Obstacle"))
-        {
-            print("dfdsfa");
-            // 충돌 시 270도 회전 후 전진하고, 90도 회전 후 전진
-            StartCoroutine(ReverseAndMove());
-        }
+        //if (collision.transform.tag == "Obstacle")
+        //{
+        //    print("dfdsfa");
+        //    // 충돌 시 270도 회전 후 전진하고, 90도 회전 후 전진
+        //    StartCoroutine(ReverseAndMove());
+        //}
     }
+
+    Rigidbody2D rb;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (isDead) return;
         if (other.CompareTag("Spear"))
         {
-            print("Dead");
-            isDead = true;
-            StageManger.Instance.CountKillEnemy();
-            TimeManager.Instance.HitStop(0.4f);
-            
+            Dead(other);
         }
         if (other.CompareTag("PlayerBullet"))
         {
-            print("Dead");
-            isDead = true;
-            StageManger.Instance.CountKillEnemy();
-            TimeManager.Instance.HitStop(0.4f);
+            Dead(other);
             Destroy(other.gameObject);
         }
+    }
+
+    public void Dead(Collider2D other)
+    {
+        print("Dead");
+        isDead = true;
+        StageManger.Instance.CountKillEnemy();
+        TimeManager.Instance.HitStop(0.4f);
+        if (bloodParticle != null)
+            bloodParticle.Play();
+        rb = transform.GetComponent<Rigidbody2D>();
+        Vector3 forceDirection = (transform.position - (other.transform.position + other.transform.up * -2)).normalized;
+        rb.AddForce(forceDirection, ForceMode2D.Impulse);
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
     private void SharkAttack()
@@ -99,13 +107,14 @@ public class SharkMove : Enemy
     {
         teeth.SetActive(true);
         GameObject attackTeeth = teeth.transform.GetChild(1).gameObject;
-        yield return new WaitForSeconds(0.1f);
+        _speed = speed - 6;
+        yield return new WaitForSeconds(0.3f);
 
         attackTeeth.SetActive(true);
 
         while (true)
         {
-            _speed = speed + 3;
+            _speed = speed + 6;
             attackTeeth.transform.localScale = Vector3.Lerp(attackTeeth.transform.localScale, Vector3.one, Time.deltaTime * 10f);
             if (Vector3.Distance(attackTeeth.transform.localScale, Vector3.one) < 0.1f || isDead) break;
             yield return null;

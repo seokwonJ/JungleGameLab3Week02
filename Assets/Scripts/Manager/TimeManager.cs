@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimeManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class TimeManager : MonoBehaviour
 
     private int hitNum = 0;
     private bool isClear;
+
+    public Image bulletBackground;
 
     void Awake()
     {
@@ -33,6 +36,25 @@ public class TimeManager : MonoBehaviour
         } 
         BulletTime();
         if (hitNum > 0 && !waiting) WaitingHitStop(0.2f);
+        
+        if (bulletBackground != null)
+        {
+            if (isbulletTime)
+            {
+                bulletBackground.color = Color.Lerp(bulletBackground.color, new Color32(255, 255, 255, 10), Time.unscaledDeltaTime * 10);
+            }
+            else
+            {
+                bulletBackground.color = Color.Lerp(bulletBackground.color, new Color32(255, 255, 255, 0), Time.unscaledDeltaTime * 50);
+            }
+        }
+        else
+        {
+            bulletBackground = GameObject.FindGameObjectWithTag("BulletTime").GetComponent<Image>();
+        }
+
+
+
     }
 
     public void Dead()
@@ -103,7 +125,7 @@ public class TimeManager : MonoBehaviour
     IEnumerator Wait(float duration)
     {
         print("1");
-        Camera.main.GetComponent<CameraController>().StartShake(0.4f, 0.4f);
+        Camera.main.GetComponent<CameraController>().StartShake(0.4f, 0.2f);
         yield return new WaitForSecondsRealtime(duration);
         Time.timeScale = isbulletTime ? 0.1f : 1.0f;
         hitNum -= 1;

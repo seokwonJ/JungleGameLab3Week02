@@ -13,6 +13,7 @@ public class PirateBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.up = dir.normalized;
         transform.position += dir * speed * Time.deltaTime;
     }
 
@@ -22,6 +23,7 @@ public class PirateBullet : MonoBehaviour
         {
             dir *= -1;
             gameObject.tag = "PlayerBullet";
+            speed = 50;
         }
         if (other.tag == "Player")
         {

@@ -1,10 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
-using Unity.VisualScripting;
-using System.Runtime.InteropServices.WindowsRuntime;
-using NUnit;
 
 public class KrakenMove : MonoBehaviour
 {
@@ -49,6 +45,7 @@ public class KrakenMove : MonoBehaviour
     private bool end;
     public CircleCollider2D circleCollider;
 
+    public ParticleSystem bloodParticle;
 
     void Start()
     {
@@ -190,6 +187,7 @@ public class KrakenMove : MonoBehaviour
         else if (bossHp == 0)
         {
             end = true;
+            player.gameObject.tag = "Untagged";
             bossController.BossClear();
         }
             transform.GetChild(0).GetComponent<SpriteRenderer>().color = krakenBodyColor;
@@ -200,6 +198,7 @@ public class KrakenMove : MonoBehaviour
                 transform.GetChild(0).GetChild(0).GetChild(i).GetChild(j).GetComponent<SpriteRenderer>().color = krakenLegColor;
             }
         }
+        bloodParticle.Play();
     }
 
 

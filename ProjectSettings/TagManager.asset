@@ -15,6 +15,7 @@ TagManager:
   - Invincibility
   - PlayerBullet
   - Exit
+  - BulletTime
   layers:
   - Default
   - TransparentFX

@@ -68,7 +68,21 @@ public class PirateShipMove : Enemy
     IEnumerator shot()
     {
         canon.SetActive(true);
-        yield return new WaitForSeconds(0.25f);
+        canon.transform.localScale = Vector3.zero;
+        //yield return new WaitForSeconds(0.25f);
+
+        while (true)
+        {
+            canon.transform.localScale = Vector3.Lerp(canon.transform.localScale, Vector3.one, Time.deltaTime * 10);
+            if (Vector2.Distance(canon.transform.localScale, Vector2.one) < 0.1f)
+            {
+                canon.transform.localScale = Vector2.one;
+                break;
+            }
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForSeconds(0.2f);
+
         if (!isDead)
         {
             GameObject _bullet = Instantiate(bullet, transform.position, Quaternion.identity);
@@ -79,23 +93,35 @@ public class PirateShipMove : Enemy
         }
     }
 
+    public ParticleSystem bloodParticle;
+    Rigidbody2D rb;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (isDead) return;
         if (other.tag == "Spear")
         {
-            isDead = true;
-            print("pirate die");
-            TimeManager.Instance.HitStop(0.4f);
-            StageManger.Instance.CountKillEnemy();
+            Dead(other);
         }
         if (other.CompareTag("PlayerBullet"))
         {
-            print("Dead");
-            isDead = true;
-            TimeManager.Instance.HitStop(0.4f);
-            StageManger.Instance.CountKillEnemy();
+            Dead(other);
             Destroy(other.gameObject);
         }
+    }
+
+    public void Dead(Collider2D other)
+    {
+        isDead = true;
+        print("pirate die");
+        TimeManager.Instance.HitStop(0.4f);
+        StageManger.Instance.CountKillEnemy();
+        if (bloodParticle != null)
+            bloodParticle.Play();
+        rb = transform.GetComponent<Rigidbody2D>();
+        Vector3 forceDirection = (transform.position - (other.transform.position + other.transform.up * -2)).normalized;
+        rb.AddForce(forceDirection * 0.5f, ForceMode2D.Impulse);
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(true);
     }
 }
