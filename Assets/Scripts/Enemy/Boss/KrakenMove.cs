@@ -323,7 +323,7 @@ public class KrakenMove : MonoBehaviour
             ball.transform.up = transform.up;
             ball.GetComponent<KrakenBall>().speed = 25;
             transform.Rotate(0, 0, 20);
-            cameraController.StartShake(0.07f, 0.08f);
+            cameraController.StartShake(0.035f, 0.04f);
             if (ballCount > maxCount)
             {
                 ballCount = 0;

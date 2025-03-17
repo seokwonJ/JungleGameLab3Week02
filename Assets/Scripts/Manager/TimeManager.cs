@@ -52,9 +52,6 @@ public class TimeManager : MonoBehaviour
         {
             bulletBackground = GameObject.FindGameObjectWithTag("BulletTime").GetComponent<Image>();
         }
-
-
-
     }
 
     public void Dead()
@@ -67,13 +64,13 @@ public class TimeManager : MonoBehaviour
 
     public void BulletTime()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             isbulletTime = true;
             Time.timeScale = 0.1f;
             Time.fixedDeltaTime = 0.02f * Time.timeScale; // 물리 연산을 부드럽게
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             isbulletTime = false;
             Time.timeScale = 1f;
