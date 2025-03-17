@@ -21,9 +21,11 @@ public class PirateBullet : MonoBehaviour
     {
         if (other.tag == "Spear")
         {
+            Camera.main.GetComponent<CameraController>().StartShake(0.3f, 0.3f);
             dir *= -1;
             gameObject.tag = "PlayerBullet";
             speed = 50;
+
         }
         if (other.tag == "Player")
         {

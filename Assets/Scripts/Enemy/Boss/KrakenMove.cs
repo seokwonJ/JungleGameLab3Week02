@@ -75,8 +75,6 @@ public class KrakenMove : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Z)) BossDamaged();
         if (end)
         {
             StopAllCoroutines();
