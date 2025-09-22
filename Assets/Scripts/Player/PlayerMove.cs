@@ -21,11 +21,14 @@ public class PlayerMove : MonoBehaviour
     private Vector2 moveInput;
     private bool isDashing = false;
     private float lastDashTime = -10f;
-    
+    public CameraController cameraController;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.linearDamping = drag; // Unity 6에서는 linearDrag 사용
+        cameraController = Camera.main.GetComponent<CameraController>();
     }
 
     void Update()
@@ -84,23 +87,30 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    public GameObject tail;
     IEnumerator Dash()
     {
+        tail.SetActive(true);
         isDashing = true;
         playerHp.SetInvincibility();
         lastDashTime = Time.time;
         Vector2 dashDirection = moveInput.normalized;
         body.transform.up = dashDirection;
         rb.linearVelocity = dashDirection * dashSpeed;
+        cameraController.StartDashCamera();
         yield return new WaitForSeconds(dashDuration);
+        cameraController.EndDashCamera();
         isDashing = false;
         playerHp.SetNotInvincibility();
+        tail.SetActive(false);
     }
 
     public void  AttackPush(Vector3 direction)
     {
         StopAllCoroutines();
+        cameraController.EndDashCamera();
         isDashing = false;
+        tail.SetActive(false);
         playerHp.SetNotInvincibility();
         Vector2 pushDirection = direction; // 현재 바라보는 방향
         rb.linearVelocity = Vector3.zero;

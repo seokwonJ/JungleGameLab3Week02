@@ -1,17 +1,21 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimeManager : MonoBehaviour
 {
     static TimeManager _instance;
     public static TimeManager Instance { get { return _instance; } private set { } }
 
-    private float playTime = 0;
-    private float bulletTimeGauge = 100;
+    public float playTime = 0;
+    public float bulletTimeGauge = 100;
     private bool isbulletTime;
     private bool waiting;
 
     private int hitNum = 0;
+    private bool isClear;
+
+    public Image bulletBackground;
 
     void Awake()
     {
@@ -26,22 +30,47 @@ public class TimeManager : MonoBehaviour
 
     private void Update()
     {
-        playTime += Time.unscaledDeltaTime;
+        if (!isClear)
+        {
+            playTime += Time.unscaledDeltaTime;
+        } 
         BulletTime();
-        if (hitNum > 0 && !waiting) WaitingHitStop(0.4f);
+        if (hitNum > 0 && !waiting) WaitingHitStop(0.2f);
+        
+        if (bulletBackground != null)
+        {
+            if (isbulletTime)
+            {
+                bulletBackground.color = Color.Lerp(bulletBackground.color, new Color32(255, 255, 255, 10), Time.unscaledDeltaTime * 10);
+            }
+            else
+            {
+                bulletBackground.color = Color.Lerp(bulletBackground.color, new Color32(255, 255, 255, 0), Time.unscaledDeltaTime * 50);
+            }
+        }
+        else
+        {
+            bulletBackground = GameObject.FindGameObjectWithTag("BulletTime").GetComponent<Image>();
+        }
     }
 
-
+    public void Dead()
+    {
+        bulletTimeGauge = 100;
+        isbulletTime = false;
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f; // 기본값 복구
+    }
 
     public void BulletTime()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             isbulletTime = true;
             Time.timeScale = 0.1f;
             Time.fixedDeltaTime = 0.02f * Time.timeScale; // 물리 연산을 부드럽게
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             isbulletTime = false;
             Time.timeScale = 1f;
@@ -63,6 +92,10 @@ public class TimeManager : MonoBehaviour
             if (bulletTimeGauge <= 100)
             {
                 bulletTimeGauge += Time.unscaledDeltaTime * 10;
+            }
+            else
+            {
+                bulletTimeGauge = 100;
             }
         }
     }
@@ -89,10 +122,15 @@ public class TimeManager : MonoBehaviour
     IEnumerator Wait(float duration)
     {
         print("1");
-        Camera.main.GetComponent<CameraController>().StartShake(0.4f, 0.4f);
+        Camera.main.GetComponent<CameraController>().StartShake(0.4f, 0.2f);
         yield return new WaitForSecondsRealtime(duration);
         Time.timeScale = isbulletTime ? 0.1f : 1.0f;
         hitNum -= 1;
         waiting = false;
+    }
+
+    public void Clear()
+    {
+        isClear = true;
     }
 }

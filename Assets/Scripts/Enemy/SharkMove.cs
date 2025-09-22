@@ -4,10 +4,11 @@ using UnityEngine.Rendering;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 
-public class SharkMove : MonoBehaviour
+public class SharkMove : Enemy
 {
     public Transform target; // 플레이어의 Transform
     public float speed = 3f; // 이동 속도
+    private float _speed;
     public float rotationSpeed = 0.5f; // 회전 속도
     public float collisionMoveDistance = 3f; // 충돌 후 이동 거리
     public float secondMoveDistance = 1f; // 두 번째 이동 거리
@@ -28,47 +29,73 @@ public class SharkMove : MonoBehaviour
                 target = playerObj.transform;
             }
         }
+        _speed = speed;
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        if (!isPlayerComming) return;
         if (isDead) return;
         if (!isReversing && target != null)
         {
-            // 플레이어 방향으로 이동
-            Vector2 direction = (target.position - transform.position).normalized;
-            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            float angle = Mathf.LerpAngle(transform.eulerAngles.z, targetAngle, rotationSpeed * Time.deltaTime);
-            transform.rotation = Quaternion.Euler(0, 0, angle); // 부드러운 회전 적용
-
-            transform.position += transform.right * speed * Time.deltaTime; // 현재 방향 기준 이동
+            Move();
             if (Vector2.Distance(transform.position, target.position) < attackDistance && !isAttack)
             {
                 isAttack = true;
                 SharkAttack();
-            } 
+            }
         }
     }
 
-    //void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.collider.CompareTag("Obstacle"))
-    //    {
-    //        // 충돌 시 270도 회전 후 전진하고, 90도 회전 후 전진
-    //        StartCoroutine(ReverseAndMove());
-    //    }
-    //}
+    private void Move()
+    {
+        // 플레이어 방향으로 이동
+        Vector2 direction = (target.position - transform.position).normalized;
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float angle = Mathf.LerpAngle(transform.eulerAngles.z, targetAngle, rotationSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(0, 0, angle); // 부드러운 회전 적용
 
-    private void OnTriggerEnter2D(Collider2D collision)
+        transform.position += transform.right * _speed * Time.deltaTime; // 현재 방향 기준 이동
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        //if (collision.transform.tag == "Obstacle")
+        //{
+        //    print("dfdsfa");
+        //    // 충돌 시 270도 회전 후 전진하고, 90도 회전 후 전진
+        //    StartCoroutine(ReverseAndMove());
+        //}
+    }
+
+    Rigidbody2D rb;
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (isDead) return;
-        if (collision.CompareTag("Spear"))
+        if (other.CompareTag("Spear"))
         {
-            // 충돌 시 270도 회전 후 전진하고, 90도 회전 후 전진
-            print("Dead");
-            isDead = true;
-            TimeManager.Instance.HitStop(0.4f);
+            Dead(other);
         }
+        if (other.CompareTag("PlayerBullet"))
+        {
+            Dead(other);
+            Destroy(other.gameObject);
+        }
+    }
+
+    public void Dead(Collider2D other)
+    {
+        print("Dead");
+        isDead = true;
+        StageManger.Instance.CountKillEnemy();
+        TimeManager.Instance.HitStop(0.4f);
+        if (bloodParticle != null)
+            bloodParticle.Play();
+        rb = transform.GetComponent<Rigidbody2D>();
+        Vector3 forceDirection = (transform.position - (other.transform.position + other.transform.up * -2)).normalized;
+        rb.AddForce(forceDirection, ForceMode2D.Impulse);
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
     private void SharkAttack()
@@ -80,20 +107,23 @@ public class SharkMove : MonoBehaviour
     {
         teeth.SetActive(true);
         GameObject attackTeeth = teeth.transform.GetChild(1).gameObject;
-        yield return new WaitForSeconds(0.1f);
+        _speed = speed - 6;
+        yield return new WaitForSeconds(0.3f);
 
         attackTeeth.SetActive(true);
 
         while (true)
         {
-            
+            _speed = speed + 6;
             attackTeeth.transform.localScale = Vector3.Lerp(attackTeeth.transform.localScale, Vector3.one, Time.deltaTime * 10f);
             if (Vector3.Distance(attackTeeth.transform.localScale, Vector3.one) < 0.1f || isDead) break;
             yield return null;
         }
         attackTeeth.transform.localScale = Vector3.zero;
-        isAttack = false;
         teeth.SetActive(false);
+        _speed = speed;
+        yield return new WaitForSeconds(1f);
+        isAttack = false;
     }
 
     private IEnumerator ReverseAndMove()

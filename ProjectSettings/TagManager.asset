@@ -10,6 +10,12 @@ TagManager:
   - Enemy
   - Dead
   - Enemy2
+  - BossCanon
+  - Item
+  - Invincibility
+  - PlayerBullet
+  - Exit
+  - BulletTime
   layers:
   - Default
   - TransparentFX
@@ -18,7 +24,7 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - 
+  - Obstacle
   - 
   - 
   - 

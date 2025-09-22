@@ -9,19 +9,9 @@ public class ShopUiManager : MonoBehaviour
     int _myCoin;
     public Text coinCount;
 
-    private void Start()
-    {
-        UpdatePurchase();
-    }
-
     public void GoStart()
     {
-        GameManager.Instance.GoInGameScene();
+        GameManager.Instance.GameOver();
     }
 
-    public void UpdatePurchase()
-    {
-        _myCoin = StateManager.Instance.MyCoin;
-        coinCount.text = "Sharksfin : " + _myCoin.ToString();
-    }
 }

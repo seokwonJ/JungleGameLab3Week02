@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2290388699090984317}
   m_Layer: 0
   m_Name: KrakenProjectile
-  m_TagString: Boss
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2539135441096455861}
@@ -96,8 +96,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.010376811, y: -0.018051118}
-  m_Size: {x: 0.61924636, y: 0.6284191}
+  m_Offset: {x: 0.0021703243, y: -0.0011549592}
+  m_Size: {x: 0.52897465, y: 0.52897465}
   m_Direction: 0
 --- !u!114 &2290388699090984317
 MonoBehaviour:
@@ -111,8 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca3d4723436547459e648c5a053b517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  returnSpeed: 6
+  speed: 2
+  returnSpeed: 25
   targetPosition: {x: 0, y: 0, z: 0}
   startPosition: {x: 0, y: 0, z: 0}
   tail: {fileID: 6266544941973408025}
@@ -256,19 +256,73 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 3
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.0026666662
-        value: 0.38553038
+        time: 0
+        value: 0.6524391
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.20376688
+        value: 0.78252286
+        inSlope: -0.1343358
+        outSlope: -0.1343358
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.3594937
+        value: 0.94363713
+        inSlope: -0.60147
+        outSlope: -0.60147
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.47683924
+        value: 0.74999994
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.64118207
+        value: 0.9179594
+        inSlope: 0.6032361
+        outSlope: 0.6032361
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.74947745
+        value: 0.7836273
+        inSlope: 0.09136678
+        outSlope: 0.09136678
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.94006336
+        value: 0.64024365
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -306,7 +360,7 @@ LineRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 0
-    textureScale: {x: 1, y: 1}
+    textureScale: {x: 1, y: 2}
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
@@ -325,3 +379,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac203d865857eb45ae5902e56d7ba14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: []

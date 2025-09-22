@@ -3,7 +3,7 @@ using UnityEngine;
 public class LineController : MonoBehaviour
 {
     LineRenderer lr;
-    Transform[] points;
+    public Transform[] points;
 
     private void Awake()
     {
